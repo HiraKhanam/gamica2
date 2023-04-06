@@ -81,7 +81,7 @@ app.delete("/user-delete", function (req, res) {
   console.log(req.query.anc);
 });
 app.use(Express.static("/build"));
-meriApp.use(myExpress.static("/my-uploads"));
+app.use(Express.static("/my-uploads"));
 app.listen(3390, function () {
   console.log("code is is cdfsdaling");
 });
