@@ -8,8 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "()"
+    "url": "git+https://github.com/HiraKhanam/gamica2.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HiraKhanam/gamica2/issues"
+  },
+  "homepage": "https://github.com/HiraKhanam/gamica2#readme"
 }
