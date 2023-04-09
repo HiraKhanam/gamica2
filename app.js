@@ -1,10 +1,10 @@
 console.log("code is is cdfsdaling");
-let tokenWali = require("jsonwebtoken");
+
 let Express = require("express");
 let tokenWali = require("jsonwebtoken");
 let cors = require("cors");
 let app = Express();
-
+let multer = require("multer");
 app.use(cors());
 app.use(Express.json());
 let users = [];
@@ -20,6 +20,16 @@ let users = [];
 //   ];
 //   response.json(users);
 // });
+const meriFileSetting = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./server/my-uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: meriFileSetting });
 app.post("/login", function (req, res) {
   let userMilgya = users.find(
     (user) => user.name == req.body.name && user.password == req.body.password
@@ -66,7 +76,7 @@ app.get("/user-lao", function (req, res) {
   res.json(userMilgya);
 });
 
-meriApp.post("/create-user", upload.array("pic", 20), function (req, res) {
+app.post("/create-user", upload.array("pic", 20), function (req, res) {
   req.body.pic = req.files[0].originalname;
 
   users.push(req.body);
